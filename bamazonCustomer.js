@@ -1,7 +1,7 @@
 // add the mysql dependency
 var mysql = require('mysql')
 
-// create the mysql connection configuration for the `ice_creamDB` database
+// create the mysql connection configuration for the `bamazon_db` database
 var connection = mysql.createConnection({
   host: 'localhost',
   // Your port; if not 3306
@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
   database: 'bamazon_db'
 })
 
-// connect to the `ice_creamDB` database
+// connect to the `bamazon_db` database
 connection.connect(function (err) {
   if (err) throw err
   console.log('connected as id ' + connection.threadId)
