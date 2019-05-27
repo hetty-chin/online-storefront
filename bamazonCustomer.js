@@ -1,4 +1,4 @@
-// add the mysql dependency
+// the mysql dependency
 var mysql = require('mysql')
 
 // create the mysql connection configuration for the `bamazon_db` database
@@ -17,7 +17,7 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
   if (err) throw err
   console.log('connected as id ' + connection.threadId)
-  afterConnection()
+  queryAllProducts()
 })
 
 /**
@@ -25,10 +25,13 @@ connection.connect(function (err) {
  * https://www.npmjs.com/package/mysql#performing-queries
  * .query(sqlString, callback), where a SQL string is the first argument and the second is a callback
  */
-function afterConnection () {
+function queryAllProducts() {
   connection.query('SELECT * FROM products', function (err, response) {
     if (err) throw err
-    console.log(response)
-    connection.end()
+    for (var i = 0; i < response.length; i++) {
+        console.log(`SKU: ${response[i].sku} | PRODUCT: ${response[i].product_name} | DEPARTMENT: ${response[i].department_name} | PRICE: $${response[i].price} | QUANTITY IN STOCK: ${response[i].stock_quantity} \n -------------------- \n` )
+    }
+    // connection.end()
   })
+
 }
