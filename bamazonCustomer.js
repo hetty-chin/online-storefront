@@ -93,7 +93,7 @@ function promptCustomer() {
                         ],
                         function (error) {
                             if (error) throw err
-                            console.log('You order was placed successfully! \n What else would you like to buy?')
+                            console.log('Your order was placed successfully! \n What else would you like to buy?')
                             start()
                           }
 
